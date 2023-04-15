@@ -231,7 +231,7 @@ A dialog box pops up to allow the user to select the file to be compared, and th
     - After the `Settings` item is pulled down, you can choose to set the background color or text color. After clicking the option, a setting dialog box will pop up, select and click OK to set
     - After the `Help` item is pulled down, you can view the quick start tutorial of the text editor to assist users in learning operations.
 
-    ## Difficulty
+## Difficulty
 
     + Designation of the file path to open/save the file
       + The main difficulty we have encountered is how to provide users with a friendly and convenient interactive window for specifying the path and file name of the open/save file. If the method of letting the user input a character string to specify the path is used, there will be problems such as relative path and absolute path are not clear, and the path does not exist.
@@ -247,14 +247,14 @@ A dialog box pops up to allow the user to select the file to be compared, and th
     + show line number
       + Need to use window subclass technology, use our child window to intercept `WM_PAINT` message to draw line number, and then send it to `RichEdit` control to continue processing other messages.
 
-    ## Innovation
+## Innovation
 
        - Inspired by the syntax of Markdown, we designed multi-level headings for text editors. The font size of the title is designed relative to the global font, which can meet the needs of users to grasp the text structure
        - We have implemented a toolbar, which matches icon buttons for common operations, making it more convenient for users to operate
        - Inspired by commonly used code editors, we designed different theme colors for text editors to enrich users' visual experience
        - We have implemented a log-like file comparison function, which can easily allow users to compare the differences between two files (specific to the line), so that users can compare the differences between different versions of code files
 
-    ## Group division
+## Group division
 
     | Team Members | Before Midterm                | After Midterm                                                |
     | ------------ | ----------------------------- | ------------------------------------------------------------ |
@@ -262,6 +262,12 @@ A dialog box pops up to allow the user to select the file to be compared, and th
     | Xinran Yu    | Interface Design, System Demo | Setting Fonts, Setting Themes, Toolbars, Interface Design    |
     | Junyu Xu     | Shortcut key binding          | Find, replace, line jump goto, status bar, shortcut key binding |
 
-    ### Video
+## Video
 
     We recorded a short demonstration video (1 minute 30 seconds), in the video directory
+
+## Author
+
++ Qi Ma(mq19@mails.tsinghua.edu.cn)
++ Xinran Yu
++ Junyu Xu 
