@@ -233,34 +233,32 @@ A dialog box pops up to allow the user to select the file to be compared, and th
 
 ## Difficulty
 
-    + Designation of the file path to open/save the file
-      + The main difficulty we have encountered is how to provide users with a friendly and convenient interactive window for specifying the path and file name of the open/save file. If the method of letting the user input a character string to specify the path is used, there will be problems such as relative path and absolute path are not clear, and the path does not exist.
-      + To this end, we investigated the interface provided by Win32, and found the type structure of `OPENFILENAME`, and the two Win32 interfaces `GetOpenFileName` and `GetSaveFileName`, so that we can use the file manager provided by Windows to conveniently specify the file path and The file name avoids problems such as the path does not exist.
-      + For this solution, we refer to a tutorial on opening/saving files: http://www.interq.or.jp/chubu/r6/masm32/tute/tute012.html
-    + Realization of shortcut key functions:
++ Designation of the file path to open/save the file
++ The main difficulty we have encountered is how to provide users with a friendly and convenient interactive window for specifying the path and file name of the open/save file. If the method of letting the user input a character string to specify the path is used, there will be problems such as relative path and absolute path are not clear, and the path does not exist.
++ To this end, we investigated the interface provided by Win32, and found the type structure of `OPENFILENAME`, and the two Win32 interfaces `GetOpenFileName` and `GetSaveFileName`, so that we can use the file manager provided by Windows to conveniently specify the file path and The file name avoids problems such as the path does not exist.
++ For this solution, we refer to a tutorial on opening/saving files: http://www.interq.or.jp/chubu/r6/masm32/tute/tute012.html
++ Realization of shortcut key functions:
     
-      - At the beginning, we fell into the misunderstanding of using menu accelerator keys to realize shortcut keys, that is, adding accelerator keys in the resource file that defines the menu, and calling functions on the menu through shortcut keys. Later, it was found that this method can only be used when the menu bar is opened, which cannot meet the needs of users. Therefore, we will add it later by judging whether the keyboard input is a shortcut key in the loop processing message function.
+  - At the beginning, we fell into the misunderstanding of using menu accelerator keys to realize shortcut keys, that is, adding accelerator keys in the resource file that defines the menu, and calling functions on the menu through shortcut keys. Later, it was found that this method can only be used when the menu bar is opened, which cannot meet the needs of users. Therefore, we will add it later by judging whether the keyboard input is a shortcut key in the loop processing message function.
     
-      - For this solution we refer to a simple text editor project: https://github.com/philiparvidsson/Worlds-Smallest-Text-Editor
-    + Implementation of font setting and color setting:
-      + We used `FontDialog` and `ColorDialog` packaged by masm32 at the beginning, but it did not handle the user clicking "Cancel" or "OK" without clicking anything. The former is because it cannot tell the caller whether the user clicked or not. "Cancel", the latter because it doesn't set reasonable defaults (like it sets the background default to black). So we rewritten `FontDialog` and `ColorDialog`, implemented `MyFontDialog` and `MyColorDialog`, and called `ChooseFont` and `ChooseColor` of win32 internally.
-    + show line number
-      + Need to use window subclass technology, use our child window to intercept `WM_PAINT` message to draw line number, and then send it to `RichEdit` control to continue processing other messages.
+  - For this solution we refer to a simple text editor project: https://github.com/philiparvidsson/Worlds-Smallest-Text-Editor
++ Implementation of font setting and color setting:
++ We used `FontDialog` and `ColorDialog` packaged by masm32 at the beginning, but it did not handle the user clicking "Cancel" or "OK" without clicking anything. The former is because it cannot tell the caller whether the user clicked or not. "Cancel", the latter because it doesn't set reasonable defaults (like it sets the background default to black). So we rewritten `FontDialog` and `ColorDialog`, implemented `MyFontDialog` and `MyColorDialog`, and called `ChooseFont` and `ChooseColor` of win32 internally.
++ show line number
++ Need to use window subclass technology, use our child window to intercept `WM_PAINT` message to draw line number, and then send it to `RichEdit` control to continue processing other messages.
 
 ## Innovation
-
-       - Inspired by the syntax of Markdown, we designed multi-level headings for text editors. The font size of the title is designed relative to the global font, which can meet the needs of users to grasp the text structure
-       - We have implemented a toolbar, which matches icon buttons for common operations, making it more convenient for users to operate
-       - Inspired by commonly used code editors, we designed different theme colors for text editors to enrich users' visual experience
-       - We have implemented a log-like file comparison function, which can easily allow users to compare the differences between two files (specific to the line), so that users can compare the differences between different versions of code files
+- Inspired by the syntax of Markdown, we designed multi-level headings for text editors. The font size of the title is designed relative to the global font, which can meet the needs of users to grasp the text structure
+- We have implemented a toolbar, which matches icon buttons for common operations, making it more convenient for users to operate
+- Inspired by commonly used code editors, we designed different theme colors for text editors to enrich users' visual experience
+- We have implemented a log-like file comparison function, which can easily allow users to compare the differences between two files (specific to the line), so that users can compare the differences between different versions of code files
 
 ## Group division
-
-    | Team Members | Before Midterm                | After Midterm                                                |
-    | ------------ | ----------------------------- | ------------------------------------------------------------ |
-    | Qi Ma        | System architecture, file I/O | Character editing operations (undo and redo, copy and paste, etc.), multi-level titles, setting background/font colors, multiple windows, log-like file comparison, display line numbers |
-    | Xinran Yu    | Interface Design, System Demo | Setting Fonts, Setting Themes, Toolbars, Interface Design    |
-    | Junyu Xu     | Shortcut key binding          | Find, replace, line jump goto, status bar, shortcut key binding |
+| Team Members | Before Midterm                | After Midterm                                                |
+| ------------ | ----------------------------- | ------------------------------------------------------------ |
+| Qi Ma        | System architecture, file I/O | Character editing operations (undo and redo, copy and paste, etc.), multi-level titles, setting background/font colors, multiple windows, log-like file comparison, display line numbers |
+| Xinran Yu    | Interface Design, System Demo | Setting Fonts, Setting Themes, Toolbars, Interface Design    |
+| Junyu Xu     | Shortcut key binding          | Find, replace, line jump goto, status bar, shortcut key binding |
 
 ## Video
 
