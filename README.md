@@ -88,7 +88,7 @@ By sending `EM_SETCHARFORMAT` and `EM_SETBKGNDCOLOR` to change the text color an
 
 | Find                        | Replace                       | Line Jump               |
 | --------------------------- | ----------------------------- | ----------------------- |
-| ![search](image\search.png) | ![replace](image\replace.png) | ![goto](image\goto.png) |
+| ![search](image/search.png) | ![replace](image/replace.png) | ![goto](image/goto.png) |
 
 #### Find function
 
@@ -238,7 +238,7 @@ A dialog box pops up to allow the user to select the file to be compared, and th
 + To this end, we investigated the interface provided by Win32, and found the type structure of `OPENFILENAME`, and the two Win32 interfaces `GetOpenFileName` and `GetSaveFileName`, so that we can use the file manager provided by Windows to conveniently specify the file path and The file name avoids problems such as the path does not exist.
 + For this solution, we refer to a tutorial on opening/saving files: http://www.interq.or.jp/chubu/r6/masm32/tute/tute012.html
 + Realization of shortcut key functions:
-    
+  
   - At the beginning, we fell into the misunderstanding of using menu accelerator keys to realize shortcut keys, that is, adding accelerator keys in the resource file that defines the menu, and calling functions on the menu through shortcut keys. Later, it was found that this method can only be used when the menu bar is opened, which cannot meet the needs of users. Therefore, we will add it later by judging whether the keyboard input is a shortcut key in the loop processing message function.
     
   - For this solution we refer to a simple text editor project: https://github.com/philiparvidsson/Worlds-Smallest-Text-Editor
